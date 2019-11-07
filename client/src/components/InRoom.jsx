@@ -17,6 +17,18 @@ export default class InRoom extends Component {
             this.setState({messages: response.data})
         })
     }
+    sendMessage = (evt) => {
+        evt.preventDefault()
+        let currentUser = JSON.parse(localStorage.getItem('currentUser'))
+        let message = {
+            messageContent: evt.target.messageContent.value,
+            roomId: this.state.data._id,
+            creatorName: currentUser.userName
+        }
+        console.log(currentUser)
+        console.log(evt.target.messageContent.value)
+        axios.post('/messages', message)
+    }
     render() {
         const messagesRender = this.state.messages.map((message, index) => {
             return <Message
@@ -31,6 +43,10 @@ export default class InRoom extends Component {
                 <div className='board'>
                 {messagesRender}
                 </div>
+                <form onSubmit={this.sendMessage}>
+                    <input type='text' name='messageContent' placeholder='Send A Message!'/>
+                    <input type='submit' value='Send'/>
+                </form>
             </div>
         )
     }

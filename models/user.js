@@ -1,7 +1,8 @@
 const mongoose = require('./connection.js')
 
 const UserModelSchema = new mongoose.Schema({
- userName: String
+ userName: String,
+ current: false
 })
 
 const UserCollection = mongoose.model('User', UserModelSchema)
@@ -26,5 +27,5 @@ module.exports = {
   getUsers,
   addUser,
   deleteUser,
-  getUser
+  getUser 
 }

@@ -13,6 +13,7 @@ export default class Rooms extends Component {
         .then((response) => {
             this.setState({roomList: response.data})
         })
+        localStorage.setItem('currentUser', JSON.stringify(this.props.currentUser))
     }
     
     render() {

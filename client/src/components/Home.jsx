@@ -16,6 +16,7 @@ export default class Home extends Component {
         .then((res) => {
             this.setState({userRoster: res.data})
         })
+        localStorage.clear()
     }
     userHandle = (evt) => {
         const currentUserHandle = evt.target.value
@@ -35,8 +36,10 @@ export default class Home extends Component {
             }
         }
         let currentUser = {userName: this.state.currentUserHandle}
-        this.setState({currentUser})
         await axios.post('/users', currentUser)
+        .then((newUser) => {
+            this.setState({currentUser: newUser.data})
+        })
         await this.toggleLogin()
     }
     render() {

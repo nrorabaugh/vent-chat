@@ -6,6 +6,7 @@
   "dependencies": {
     "concurrently": "^4.1.1",
     "express": "^4.17.1",
+    "local-storage": "^2.0.0",
     "mongoose": "^5.6.1"
   },
   "engines": {
