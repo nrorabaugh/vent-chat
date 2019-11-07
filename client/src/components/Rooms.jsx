@@ -4,16 +4,19 @@ import axios from 'axios'
 
 export default class Rooms extends Component {
     state = {
-        currentUser: {}
+        currentUser: {},
+        roomList: []
     }
 
-    roomsGather() {
+    componentDidMount = () => {
         return axios.get('/rooms')
+        .then((response) => {
+            this.setState({roomList: response.data})
+        })
     }
     
     render() {
-        const roomsArray = this.roomsGather()
-        const roomsRender = roomsArray.map((room, index) => {
+        const roomsRender = this.state.roomList.map((room, index) => {
             return <RoomListItem
             name={room.name}
             messageCount={room.messageCount}

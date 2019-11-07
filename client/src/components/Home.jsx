@@ -30,12 +30,14 @@ export default class Home extends Component {
         for(let i=0; i<this.state.userRoster.length; i++) {
             if(this.state.currentUserHandle === this.state.userRoster[i].userName) {
                 this.setState({currentUser: this.state.userRoster[i]})
+                await this.toggleLogin()
                 return
             }
         }
         let currentUser = {userName: this.state.currentUserHandle}
         this.setState({currentUser})
         await axios.post('/users', currentUser)
+        await this.toggleLogin()
     }
     render() {
         return (
