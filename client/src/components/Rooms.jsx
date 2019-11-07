@@ -9,7 +9,7 @@ export default class Rooms extends Component {
     }
 
     componentDidMount = () => {
-        return axios.get('/rooms')
+        axios.get('/rooms')
         .then((response) => {
             this.setState({roomList: response.data})
         })
@@ -18,6 +18,8 @@ export default class Rooms extends Component {
     render() {
         const roomsRender = this.state.roomList.map((room, index) => {
             return <RoomListItem
+            id={room._id}
+            key={index}
             name={room.name}
             messageCount={room.messageCount}
             />
