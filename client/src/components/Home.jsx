@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Rooms from './Rooms'
+import Mudroom from './Mudroom'
 
 export default class Home extends Component {
     state = {
@@ -45,7 +45,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                { this.state.loggedIn? <Rooms
+                { this.state.loggedIn? <Mudroom
                 currentUser = {this.state.currentUser}/> 
                 :
                 <div>

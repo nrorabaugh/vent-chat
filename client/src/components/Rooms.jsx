@@ -13,7 +13,6 @@ export default class Rooms extends Component {
         .then((response) => {
             this.setState({roomList: response.data})
         })
-        localStorage.setItem('currentUser', JSON.stringify(this.props.currentUser))
     }
     
     render() {
@@ -29,6 +28,7 @@ export default class Rooms extends Component {
             <div>
                 <h1>VentChat</h1>
                 {roomsRender}
+                <a href='/newRoom'><button>Create New Room</button></a>
             </div>
         )
     }

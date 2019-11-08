@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-// import { Link } from 'react'
 
 export default class RoomListItem extends Component {
     render() {
-        let link = `/room/${this.props.id}`
+        let link = `/rooms/${this.props.id}`
         return (
             <div>
                 <a href={link}>
