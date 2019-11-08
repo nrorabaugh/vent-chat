@@ -28,7 +28,7 @@ roomRouter.get('/rooms/:id', (req, res) => {
 roomRouter.delete('/rooms/:id', (req, res) => {
     roomApi.deleteRoom(req.params.id)
     .then(() => {
-        res.redirect('/users')
+        res.redirect('/rooms')
     })
 })
 
