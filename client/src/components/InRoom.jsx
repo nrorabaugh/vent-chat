@@ -41,7 +41,9 @@ export default class InRoom extends Component {
             <div>
                 <h1>{this.state.data.name}</h1>
                 <div className='board'>
-                {messagesRender}
+                    <div className='messageWrapper'>
+                        {messagesRender}
+                    </div>
                 </div>
                 <form onSubmit={this.sendMessage}>
                     <input type='text' name='messageContent' placeholder='Send A Message!'/>
