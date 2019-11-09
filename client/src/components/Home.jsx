@@ -48,13 +48,13 @@ export default class Home extends Component {
                 { this.state.loggedIn? <Mudroom
                 currentUser = {this.state.currentUser}/> 
                 :
-                <div>
-                    <h1>VentChat</h1>
-                    <form onSubmit={this.login}>
+                <div className='flex'>
+                    <h1 className='title'>VentChat</h1>
+                    <form className='login' onSubmit={this.login}>
                         <input type='text' name='userName' placeholder='Screen Name' onChange={this.userHandle}/>
-                        <input type='submit' value='Enter'/>
+                        <input className='submit' type='submit' value='Enter'/>
                     </form>
-                </div>
+                    </div>
                 }
             </div>
         )
