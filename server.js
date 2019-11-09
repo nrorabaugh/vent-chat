@@ -12,9 +12,9 @@ app.use(express.json())
 
 app.use(express.static(`${__dirname}/client/build`))
 
-app.use('/', messageRouter)
-app.use('/', roomRouter)
-app.use('/', userRouter)
+app.use('/api', messageRouter)
+app.use('/api', roomRouter)
+app.use('/api', userRouter)
 
 app.get('/*', (req, res) => {
     res.sendFile(`${__dirname}/client/build/index.html`)

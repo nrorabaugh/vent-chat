@@ -12,9 +12,9 @@ export default class NewRoom extends Component {
         let currentUser = JSON.parse(localStorage.getItem('currentUser'))
         let newRoom = {
             name: evt.target.name.value,
-            creatorId: currentUser._id
+            creatorName: currentUser.userName
         }
-        Axios.post('/rooms', newRoom)
+        Axios.post('/api/rooms', newRoom)
         .then(() => {
             this.setState({redirect: true})
         })

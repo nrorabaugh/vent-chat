@@ -2,7 +2,6 @@ const mongoose = require('./connection.js')
 
 const RoomModelSchema = new mongoose.Schema({
  name: String,
- messageCount: String,
  creatorId: String 
 })
 

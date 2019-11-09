@@ -8,11 +8,11 @@ export default class InRoom extends Component {
         messages: []
     }
     componentDidMount = () => {
-        axios.get(`/rooms/${this.props.match.params.id}`)
+        axios.get(`/api/rooms/${this.props.match.params.id}`)
         .then((response) => {
             this.setState({data: response.data})
         })
-        axios.get(`/messages/room/${this.props.match.params.id}`)
+        axios.get(`/api/messages/room/${this.props.match.params.id}`)
         .then((response) => {
             this.setState({messages: response.data})
         })
@@ -27,7 +27,7 @@ export default class InRoom extends Component {
         }
         console.log(currentUser)
         console.log(evt.target.messageContent.value)
-        axios.post('/messages', message)
+        axios.post('/api/messages', message)
     }
     render() {
         const messagesRender = this.state.messages.map((message, index) => {

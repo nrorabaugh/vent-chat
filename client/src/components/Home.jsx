@@ -12,7 +12,7 @@ export default class Home extends Component {
         loggedIn: false
     }
     componentDidMount() {
-        axios.get('/users')
+        axios.get('/api/users')
         .then((res) => {
             this.setState({userRoster: res.data})
         })
@@ -36,7 +36,7 @@ export default class Home extends Component {
             }
         }
         let currentUser = {userName: this.state.currentUserHandle}
-        await axios.post('/users', currentUser)
+        await axios.post('/api/users', currentUser)
         .then((newUser) => {
             this.setState({currentUser: newUser.data})
         })

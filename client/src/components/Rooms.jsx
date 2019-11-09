@@ -9,7 +9,7 @@ export default class Rooms extends Component {
     }
 
     componentDidMount = () => {
-        axios.get('/rooms')
+        axios.get('/api/rooms')
         .then((response) => {
             this.setState({roomList: response.data})
         })
