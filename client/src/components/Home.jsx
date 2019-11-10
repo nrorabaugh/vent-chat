@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Mudroom from './Mudroom'
+import { Redirect } from 'react-router-dom'
 
 export default class Home extends Component {
     state = {
@@ -16,7 +16,6 @@ export default class Home extends Component {
         .then((res) => {
             this.setState({userRoster: res.data})
         })
-        localStorage.clear()
     }
     userHandle = (evt) => {
         const currentUserHandle = evt.target.value
@@ -26,27 +25,27 @@ export default class Home extends Component {
         let loggedIn = !this.state.loggedIn
         this.setState({loggedIn})
     }
-    login = async (event) => {
+    login = (event) => {
         event.preventDefault()
         for(let i=0; i<this.state.userRoster.length; i++) {
             if(this.state.currentUserHandle === this.state.userRoster[i].userName) {
                 this.setState({currentUser: this.state.userRoster[i]})
-                await this.toggleLogin()
-                return
+                localStorage.setItem('currentUser', JSON.stringify(this.state.userRoster[i]))
+                return this.toggleLogin()
             }
         }
         let currentUser = {userName: this.state.currentUserHandle}
-        await axios.post('/api/users', currentUser)
+        axios.post('/api/users', currentUser)
         .then((newUser) => {
             this.setState({currentUser: newUser.data})
+            localStorage.setItem('currentUser', JSON.stringify(this.state.currentUser))
         })
-        await this.toggleLogin()
+        this.toggleLogin()
     }
-    render() {
+    render = () => {
         return (
             <div>
-                { this.state.loggedIn? <Mudroom
-                currentUser = {this.state.currentUser}/> 
+                { this.state.loggedIn? <Redirect to='/rooms'/> 
                 :
                 <div className='flex'>
                     <h1 className='title'>VentChat</h1>
