@@ -38,8 +38,8 @@ export default class InRoom extends Component {
             />
         })
         return (
-            <div>
-                <h1>{this.state.data.name}</h1>
+            <div className='roomWall'>
+                <h1 className='banner'>{this.state.data.name}</h1>
                 <div className='board'>
                     <div className='messageWrapper'>
                         {messagesRender}
