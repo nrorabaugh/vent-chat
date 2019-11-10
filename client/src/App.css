@@ -80,12 +80,8 @@ div.board {
   margin: 0;
 }
 
-input {
+form input {
   font-size: 22px;
-}
-
-input[type=submit] {
-  height: 40px;
 }
 
 .login {
