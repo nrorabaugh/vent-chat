@@ -26,7 +26,10 @@ export default class Rooms extends Component {
         })
         return (
             <div>
-                <h1 className='banner'>VentChat</h1>
+                <div className='banner'>
+                    <a href='/'>Log Out</a>
+                    <h1>VentChat</h1>
+                </div>
                 {roomsRender}
                 <a href='/newRoom'><button>Create New Room</button></a>
             </div>

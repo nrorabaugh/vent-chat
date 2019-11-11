@@ -15,12 +15,12 @@ export default class RoomListItem extends Component {
     render() {
         let link = `/rooms/${this.props.id}`
         return (
+            <a href={link}>
             <div className='listItem'>
-                <a href={link}>
                     <h2>{this.props.name}</h2>
-                    <p>{this.state.messages.length} {this.state.messages.length == 1? 'message' : 'messages'}</p>
-                </a>
+                    <p>{this.state.messages.length} {this.state.messages.length === 1? 'message' : 'messages'}</p>
             </div>
+            </a>
         )
     }
 }
