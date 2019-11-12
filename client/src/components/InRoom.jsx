@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Message from './Message'
+import openSocket from 'socket.io-client'
+
+
 
 export default class InRoom extends Component {
+    socket = openSocket('http://localhost:4000/')
     state= {
         data: {},
         messages: []
@@ -17,6 +21,7 @@ export default class InRoom extends Component {
             this.setState({messages: response.data})
         })
     }
+
     sendMessage = (evt) => {
         evt.preventDefault()
         let currentUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -28,8 +33,17 @@ export default class InRoom extends Component {
         console.log(currentUser)
         console.log(evt.target.messageContent.value)
         axios.post('/api/messages', message)
+        .then((message) => {
+            this.socket.emit('send-message', message)
+        })
     }
     render() {
+        this.socket.on('new-message', () => {
+            axios.get(`/messages/room/${this.state.data._id}`)
+            .then((messages) => {
+                this.setState({messages})
+            })
+        })
         const messagesRender = this.state.messages.map((message, index) => {
             return <Message
             messageContent = {message.messageContent}
@@ -53,3 +67,4 @@ export default class InRoom extends Component {
         )
     }
 }
+
