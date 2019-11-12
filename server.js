@@ -5,12 +5,14 @@ const io = require('socket.io')(4000)
 io.on('connection', function(socket) {
     console.log('new user')
     socket.on('send-message', message => {
-    console.log(message)})
+        console.log(message)
+        io.emit('new-message', message)
+        })
 })
 
 io.on('send-message', message => {
     console.log(message)
-    io.emit('new-message', message)
+    
 })
 
 const { messageRouter } = require('./controllers/message.js')

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Message from './Message'
 import openSocket from 'socket.io-client'
+import { timingSafeEqual } from 'crypto'
 
 let socket = openSocket('http://localhost:4000/')
 
@@ -15,6 +16,7 @@ export default class InRoom extends Component {
         data: {},
         messages: []
     }
+    
     componentDidMount = () => {
         axios.get(`/api/rooms/${this.props.match.params.id}`)
         .then((response) => {
@@ -23,6 +25,16 @@ export default class InRoom extends Component {
         axios.get(`/api/messages/room/${this.props.match.params.id}`)
         .then((response) => {
             this.setState({messages: response.data})
+        })
+
+        socket.on('new-message', (event) => {
+            if (this.props.match.params.id !== event.data.roomId) {
+                return
+            }
+            console.log(event.data)
+            const previousState = {...this.state}
+            previousState.messages.push(event.data)
+            this.setState(previousState)
         })
     }
 
@@ -38,17 +50,12 @@ export default class InRoom extends Component {
         console.log(evt.target.messageContent.value)
         axios.post('/api/messages', message)
         .then((message) => {
-            socketSendChat(message.data)
+            socketSendChat(message)
         })
     }
     render() {
-        socket.on('new-message', () => {
-            axios.get(`/messages/room/${this.state.data._id}`)
-            .then((messages) => {
-                this.setState({messages})
-            })
-        })
-        const messagesRender = this.state.messages.map((message, index) => {
+        
+        let messagesRender = this.state.messages.map((message, index) => {
             return <Message
             messageContent = {message.messageContent}
             creatorName = {message.creatorName}
