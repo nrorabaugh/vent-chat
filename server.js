@@ -4,6 +4,8 @@ const io = require('socket.io')(4000)
 
 io.on('connection', function(socket) {
     console.log('new user')
+    socket.on('send-message', message => {
+    console.log(message)})
 })
 
 io.on('send-message', message => {
