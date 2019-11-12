@@ -3,10 +3,14 @@ import axios from 'axios'
 import Message from './Message'
 import openSocket from 'socket.io-client'
 
+let socket = openSocket('http://localhost:4000/')
 
+let socketSendChat = (value) => {
+    console.log(value)
+    socket.emit('send-message', value)
+}
 
 export default class InRoom extends Component {
-    socket = openSocket('http://localhost:4000/')
     state= {
         data: {},
         messages: []
@@ -34,11 +38,11 @@ export default class InRoom extends Component {
         console.log(evt.target.messageContent.value)
         axios.post('/api/messages', message)
         .then((message) => {
-            this.socket.emit('send-message', message)
+            socketSendChat(message.data)
         })
     }
     render() {
-        this.socket.on('new-message', () => {
+        socket.on('new-message', () => {
             axios.get(`/messages/room/${this.state.data._id}`)
             .then((messages) => {
                 this.setState({messages})
