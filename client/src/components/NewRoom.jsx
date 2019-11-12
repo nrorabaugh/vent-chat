@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom'
 
 export default class NewRoom extends Component {
     state = {
-        redirect: false,
+        url: '',
     }
 
     postNewRoom = (evt) => {
@@ -15,14 +15,16 @@ export default class NewRoom extends Component {
             creatorName: currentUser.userName
         }
         Axios.post('/api/rooms', newRoom)
-        .then(() => {
-            this.setState({redirect: true})
+        Axios.get(`/api/rooms/name/${newRoom.name}`)
+        .then((room) => {
+            this.setState({url: room.data._id})
         })
     }
     render() {
+        let roomlink = `/rooms/${this.state.url}`
         return (
-            <div>
-                {this.state.redirect? <Redirect to='/rooms'/> :
+            <div className='flex'>
+                {this.state.url? <Redirect to={roomlink}/> :
                 <form onSubmit={this.postNewRoom}>
                     <input type='text' name='name' placeholder='Room Name'/>
                     <input type='submit' value='Create Room'/>

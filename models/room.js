@@ -23,9 +23,14 @@ const getRoom = (id) => {
   return RoomCollection.findOne({_id: id})
 }
 
+const getRoomByName = (name) => {
+  return RoomCollection.findOne({name: name})
+}
+
 module.exports = {
   getRooms,
   addRoom,
   getRoom,
-  deleteRoom
+  deleteRoom,
+  getRoomByName
 }

@@ -11,6 +11,13 @@ roomRouter.post('/rooms', (req, res) => {
   })
 })
 
+roomRouter.get('/rooms/name/:name', (req,res) => {
+  roomApi.getRoomByName(req.params.name)
+  .then((room) => {
+    res.json(room)
+  })
+})
+
 roomRouter.get('/rooms', (req,res) => {
   roomApi.getRooms()
   .then((rooms) => {
