@@ -25,7 +25,7 @@ export default class Home extends Component {
         let loggedIn = !this.state.loggedIn
         this.setState({loggedIn})
     }
-    login = (event) => {
+    login = async (event) => {
         event.preventDefault()
         for(let i=0; i<this.state.userRoster.length; i++) {
             if(this.state.currentUserHandle === this.state.userRoster[i].userName) {
@@ -36,11 +36,12 @@ export default class Home extends Component {
         }
         let currentUser = {userName: this.state.currentUserHandle}
         axios.post('/api/users', currentUser)
+        axios.get(`/api/users/name/${this.state.currentUserHandle}`)
         .then((newUser) => {
-            this.setState({currentUser: newUser.data})
-            localStorage.setItem('currentUser', JSON.stringify(this.state.currentUser))
-        })
+        this.setState({currentUser: newUser.data})
+        localStorage.setItem('currentUser', JSON.stringify(this.state.currentUser))
         this.toggleLogin()
+        })
     }
     render = () => {
         return (

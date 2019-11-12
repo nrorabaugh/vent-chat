@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Message from './Message'
 import openSocket from 'socket.io-client'
-import { timingSafeEqual } from 'crypto'
 
 let socket = openSocket('http://localhost:4000/')
 
 let socketSendChat = (value) => {
-    console.log(value)
     socket.emit('send-message', value)
 }
 
@@ -26,16 +24,19 @@ export default class InRoom extends Component {
         .then((response) => {
             this.setState({messages: response.data})
         })
-
         socket.on('new-message', (event) => {
             if (this.props.match.params.id !== event.data.roomId) {
                 return
             }
-            console.log(event.data)
             const previousState = {...this.state}
             previousState.messages.push(event.data)
             this.setState(previousState)
         })
+    }
+
+    componentDidUpdate = () => {
+        let board = document.getElementsByClassName('board')[0]
+        board.scrollTo(0, board.scrollHeight)
     }
 
     sendMessage = (evt) => {
@@ -46,8 +47,6 @@ export default class InRoom extends Component {
             roomId: this.state.data._id,
             creatorName: currentUser.userName
         }
-        console.log(currentUser)
-        console.log(evt.target.messageContent.value)
         axios.post('/api/messages', message)
         .then((message) => {
             socketSendChat(message)

@@ -11,6 +11,13 @@ userRouter.post('/users', (req, res) => {
   })
 })
 
+userRouter.get('/users/name/:name', (req, res) =>{
+  userApi.getUserByName(req.params.name)
+  .then((user) => {
+    res.json(user)
+  })
+})
+
 userRouter.get('/users', (req,res) => {
     userApi.getUsers()
   .then((users) => {

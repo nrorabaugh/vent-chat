@@ -23,9 +23,14 @@ const getUser = (id) => {
   return UserCollection.findOne({_id: id})
 }
 
+const getUserByName = (name) => {
+  return UserCollection.findOne({userName: name})
+}
+
 module.exports = {
   getUsers,
   addUser,
   deleteUser,
-  getUser 
+  getUser,
+  getUserByName
 }
