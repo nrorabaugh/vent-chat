@@ -132,5 +132,14 @@ a {
   text-decoration: none;
 }
 
+.host {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete {
+  margin: 0 50px;
+  padding: 5px;
+}
 
 
