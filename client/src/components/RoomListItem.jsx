@@ -23,13 +23,17 @@ export default class RoomListItem extends Component {
         let link = `/rooms/${this.props.id}`
         let account = JSON.parse(localStorage.getItem('currentUser')).userName === this.props.creatorName
         return (
-            <a href={link}>
+            
             <div className='listItem'>
+                <a href={link}>
+                    <div className='content'>
                     <h2>{this.props.name}</h2>                   
                     <p>Hosted by {account? 'you' : this.props.creatorName}</p>
-                    <p>{this.state.messages.length} {this.state.messages.length === 1? 'message' : 'messages'}</p>                       
+                    <p>{this.state.messages.length} {this.state.messages.length === 1? 'message' : 'messages'}</p> 
+                    </div>             
+                </a>         
             </div>
-            </a>
+           
         )
     }
 }

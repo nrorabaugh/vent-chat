@@ -51,7 +51,7 @@ export default class Home extends Component {
                 <div className='flex'>
                     <h1 className='title'>VentChat</h1>
                     <form className='login' onSubmit={this.login}>
-                        <input type='text' name='userName' placeholder='Screen Name' onChange={this.userHandle}/>
+                        <input type='text' name='userName' autoComplete='off' placeholder='Screen Name' onChange={this.userHandle}/>
                         <input className='submit' type='submit' value='Enter'/>
                     </form>
                     </div>

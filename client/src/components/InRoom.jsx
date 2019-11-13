@@ -74,7 +74,7 @@ export default class InRoom extends Component {
                     </div>
                 </div>
                 <form onSubmit={this.sendMessage}>
-                    <input type='text' name='messageContent' placeholder='Send A Message!'/>
+                    <input type='text' name='messageContent' autoComplete='off' placeholder='Send A Message!'/>
                     <input type='submit' value='Send'/>
                 </form>
             </div>

@@ -28,7 +28,7 @@ export default class NewRoom extends Component {
                 <div>
                     <h1 className='title'>New VentRoom</h1>
                     <form className='login' onSubmit={this.postNewRoom}>
-                        <input type='text' name='name' placeholder='Room Name'/>
+                        <input type='text' autoComplete='off' name='name' placeholder='Room Name'/>
                         <input type='submit' value='Create Room'/>
                     </form>
                 </div>
