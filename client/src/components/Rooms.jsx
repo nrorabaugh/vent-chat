@@ -31,7 +31,9 @@ export default class Rooms extends Component {
                     <h1>VentChat</h1>
                     <a href='/'>Log Out</a>
                 </div>
-                {roomsRender}
+                <div className='rooms'>
+                    {roomsRender}
+                </div>
             </div>
         )
     }
