@@ -5,18 +5,15 @@ export default class RoomListItem extends Component {
     state = {
         messages: [],
     }
-    componentDidMount() {
+    componentDidMount = () => {
         axios.get(`/api/messages/room/${this.props.id}`)
         .then((response) => {
             this.setState({messages: response.data})
         })
     }
 
-    deleteRoom() {
-        axios.delete(`/api/messages/room/${this.props.id}`)
-        .then(() => {
-            this.render()
-        })
+    deleteRoom = () => {
+        axios.delete(`/api/rooms/${this.props.id}`)
     }
 
     render() {
