@@ -25,13 +25,16 @@ export default class RoomListItem extends Component {
         return (
             
             <div className='listItem'>
+                <div>
                 <a href={link}>
                     <div className='content'>
                     <h2>{this.props.name}</h2>                   
                     <p>Hosted by {account? 'you' : this.props.creatorName}</p>
                     <p>{this.state.messages.length} {this.state.messages.length === 1? 'message' : 'messages'}</p> 
                     </div>             
-                </a>         
+                </a>    
+                <button onClick={this.deleteRoom}>Delete</button>
+                </div>     
             </div>
            
         )
