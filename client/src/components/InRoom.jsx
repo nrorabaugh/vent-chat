@@ -64,10 +64,9 @@ export default class InRoom extends Component {
         return (
             <div className='roomWall'>
                 <div className='banner'>
-                    <a href='/'>Log Out</a>
+                    <span><a href='/newRoom'>Create Room</a><a href='/rooms'>Lobby</a></span>
                     <h1>{this.state.data.name}</h1>
-                    <a href='/newRoom'>Create Room</a>
-
+                    <a href='/'>Log Out</a>
                 </div>
                 <div className='board'>
                     <div className='messageWrapper'>
