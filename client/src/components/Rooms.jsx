@@ -4,7 +4,6 @@ import axios from 'axios'
 
 export default class Rooms extends Component {
     state = {
-        currentUser: {},
         roomList: []
     }
 
@@ -22,6 +21,7 @@ export default class Rooms extends Component {
             key={index}
             name={room.name}
             messageCount={room.messageCount}
+            creatorName={room.creatorName}
             />
         })
         return (
@@ -32,7 +32,6 @@ export default class Rooms extends Component {
                     <a href='/newRoom'>Create Room</a>
                 </div>
                 {roomsRender}
-                <a href='/newRoom'><button>Create New Room</button></a>
             </div>
         )
     }

@@ -2,7 +2,7 @@ const mongoose = require('./connection.js')
 
 const RoomModelSchema = new mongoose.Schema({
  name: String,
- creatorId: String 
+ creatorName: String 
 })
 
 const RoomCollection = mongoose.model('Room', RoomModelSchema)
