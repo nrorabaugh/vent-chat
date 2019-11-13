@@ -1,31 +1,14 @@
-# mern-template-project
+A chat app for people who seriously need to vent.
 
-# Setup A New Project From This Template
+Wireframes:
+https://drive.google.com/file/d/0B81SnKoP-KWXWlRqaWIyZmtuR3A1dUdHdEtFbU5KdjlnclhN/view?usp=sharing
+https://drive.google.com/file/d/0B81SnKoP-KWXZWs3YXM5bDhKdHBYVENzaG92Y2J4cHFpXy13/view?usp=sharing
 
-If you are starting a new project do the following:
+ERD:
+https://erdplus.com/edit-diagram/aeedfc05-4591-49ea-b312-c5292e83feef
 
-1. copy/download this directory to where you new project is located and rename
-   it to the name of your project.
-1. change your directory (`cd`) into the copied project template
-1. `npm install`
-1. `npm run dev`
-1. Open a new browser window and navigate to the URL http://localhost:3000/
-    here you should see `hello world` displayed after page load
-    updates should show up here automatically
-1. see the `client/src` `readme.md` file for more information on the react project
+Heroku:
+https://vent-chat.herokuapp.com/
 
-# Setup A New Project Without This Template
-
-If you want to start a project without using this template directory do the
-following:
-
-
-1. `mkdir <project-name>`
-1. `cd <project-name>`
-1. `echo "# <project-name>" > readme.md`
-1. `git init`
-1. `git add readme.md `
-1. `git commit -m "init repo with readme.md"`
-1. `npm init`
-1. `mkdir models views controllers`
-1. `touch ./server.js`
+Project board:
+https://trello.com/b/oq4G00U7/ventchat
