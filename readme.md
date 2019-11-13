@@ -9,3 +9,10 @@ and need to let off steam after dealing with their daily items, but have no one 
 [Heroku](https://vent-chat.herokuapp.com/)
 
 [Trello Project board](https://trello.com/b/oq4G00U7/ventchat)
+
+ERD
+<img src='./images/erd.png'/>
+
+Wireframes
+<img src='./images/wireframe1.jpg'/>
+<img src='./images/wireframe2.jpg'/>
