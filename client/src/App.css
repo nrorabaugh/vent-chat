@@ -122,6 +122,24 @@ form input {
   text-align: left;
 }
 
+a:hover {
+  background-color: gray;
+  color: lightgray;
+  border: 1px solid lightgray;
+}
+
+a:hover .listItem {
+  background-color: rgb(0, 100, 255);
+}
+
+a:hover .listItem h2 {
+  color: lightgray;
+}
+
+a:hover .listItem p {
+  color: lightgray;
+}
+
 .listItem h2,p {
   color: gray;
   text-decoration: none;
