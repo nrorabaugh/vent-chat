@@ -1,12 +1,6 @@
 const express = require('express')
 const app = express()
-const io = require('socket.io')(4000)
-
-io.on('connection', function(socket) {
-    socket.on('send-message', message => {
-        io.emit('new-message', message)
-        })
-})
+const socket = require('socket.io')
 
 const { messageRouter } = require('./controllers/message.js')
 const { roomRouter } = require('./controllers/room.js')
@@ -28,6 +22,22 @@ app.get('/*', (req, res) => {
 
 const PORT = process.env.PORT || 3001
 
-app.listen(PORT, () => {
-    console.log(`App is listening on PORT ${PORT}`)
-})
+const server = (app.listen(PORT, () => {
+            console.log(`App is listening on PORT ${PORT}`)
+        }))
+
+const io = socket(server)
+
+io.on('connection', function(socket) {
+    socket.on('send-message', (message) => {
+        console.log('new message' )
+        io.emit('new-message', message)
+        })
+    }
+)
+
+// io.configure(function () { 
+//     io.set("transports", ["xhr-polling"]); 
+//     io.set("polling duration", 10); 
+//     }
+// )

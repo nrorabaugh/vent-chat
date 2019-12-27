@@ -35,8 +35,8 @@
 div.board {
   margin: 20px auto;  
   border: 2px solid gray;
-  width: 750px;
-  height: 600px;
+  width: 60vw;
+  height: 68vh;
   overflow: scroll;
   background-color: rgb(224, 248, 255);
   border-radius: 20px;

@@ -3,7 +3,7 @@ import axios from 'axios'
 import Message from './Message'
 import openSocket from 'socket.io-client'
 
-let socket = openSocket('http://localhost:4000/')
+let socket = openSocket()
 
 let socketSendChat = (value) => {
     socket.emit('send-message', value)
@@ -25,6 +25,7 @@ export default class InRoom extends Component {
             this.setState({messages: response.data})
         })
         socket.on('new-message', (event) => {
+            console.log('sent message')
             if (this.props.match.params.id !== event.data.roomId) {
                 return
             }
