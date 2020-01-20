@@ -183,6 +183,12 @@ a:hover {
 }
 
 .listItem:hover  {
+  width: 80vw;
+  padding: 0;
+  border-radius: 90px;
+  background-color: lightgray;
+  margin: 15px auto;
+  text-align: left;
   background-color: rgb(0, 100, 255);
 }
 
